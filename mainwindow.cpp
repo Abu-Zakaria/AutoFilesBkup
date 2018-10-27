@@ -1,9 +1,12 @@
 #include <iostream>
+#include "QFileDialog"
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "QFileDialog"
+#include "QMessageBox"
+
 #include <auto-files-bkup/src/Transfer.hpp>
 #include <auto-files-bkup/src/helpers.hpp>
+
 #include <thread>
 #include <chrono>
 #include <exception>
@@ -48,6 +51,11 @@ void MainWindow::on_pushButton_start_backup_clicked()
 {
     if(backup_working)
     {
+        if(backing_up)
+        {
+            QMessageBox::warning(this, "Warning!", "The files are being backed up right now. Please, wait for a while and try again!");
+            return;
+        }
         backup_working = false;
         ui->pushButton_start_backup->setText(push_button_start_backup_text);
         ui->textBrowser_backup_status->setText("");
@@ -99,11 +107,22 @@ void MainWindow::start_backup(Transfer* transfer)
 {
     while(backup_working)
     {
+        backing_up = true;
         transfer->move();
+        backing_up = false;
         std::this_thread::sleep_for(std::chrono::minutes(delay.toUInt()));
     }
 
     std::cout << "Canceling backup process" << std::endl;
+}
+
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    if(backing_up)
+    {
+        QMessageBox::critical(this, "Hold on!", "Some files are being backed up right now. If you close this application, some of your data might be lost. Please, wait for a while and try again!");
+        event->ignore();
+    }
 }
 
 void MainWindow::on_lineEdit_delay_textChanged(const QString &delay)

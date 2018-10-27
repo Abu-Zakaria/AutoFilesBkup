@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QCloseEvent>
 #include <auto-files-bkup/src/Transfer.hpp>
 
 namespace Ui {
@@ -37,9 +38,13 @@ private:
     QString delay;
 
     QString push_button_start_backup_text = "Start Backup";
+
+    bool backing_up;
     bool backup_working = false;
 
     void start_backup(Transfer* transfer);
+
+    void closeEvent(QCloseEvent* event);
 };
 
 #endif // MAINWINDOW_H
