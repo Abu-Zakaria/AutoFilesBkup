@@ -8,12 +8,5 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
 
-//    Transfer transfer("/home/jakaria/C++/apps");
-
-//    transfer.setTargetDir("/home/jakaria/C++/xyz");
-//    transfer.setDelay(2);
-
-//    transfer.move();
-
     return a.exec();
 }
