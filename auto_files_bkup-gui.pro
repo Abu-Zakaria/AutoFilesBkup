@@ -26,10 +26,16 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    auto-files-bkup/src/ConfigReader.cpp \
+    auto-files-bkup/src/Transfer.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    auto-files-bkup/src/ConfigReader.hpp \
+    auto-files-bkup/src/helpers.hpp \
+    auto-files-bkup/src/Reader.hpp \
+    auto-files-bkup/src/Transfer.hpp
 
 FORMS += \
         mainwindow.ui
@@ -38,3 +44,29 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../usr/local/lib/release/ -lboost_system
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../usr/local/lib/debug/ -lboost_system
+else:unix: LIBS += -L$$PWD/../../../usr/local/lib/ -lboost_system
+
+INCLUDEPATH += $$PWD/../../../usr/local/include/boost/system
+DEPENDPATH += $$PWD/../../../usr/local/include/boost/system
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../../usr/local/lib/release/libboost_system.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../../usr/local/lib/debug/libboost_system.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../../usr/local/lib/release/boost_system.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../../usr/local/lib/debug/boost_system.lib
+else:unix: PRE_TARGETDEPS += $$PWD/../../../usr/local/lib/libboost_system.a
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../usr/local/lib/release/ -lboost_filesystem
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../usr/local/lib/debug/ -lboost_filesystem
+else:unix: LIBS += -L$$PWD/../../../usr/local/lib/ -lboost_filesystem
+
+INCLUDEPATH += $$PWD/../../../usr/local/include/boost/filesystem
+DEPENDPATH += $$PWD/../../../usr/local/include/boost/filesystem
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../../usr/local/lib/release/libboost_filesystem.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../../usr/local/lib/debug/libboost_filesystem.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../../usr/local/lib/release/boost_filesystem.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../../usr/local/lib/debug/boost_filesystem.lib
+else:unix: PRE_TARGETDEPS += $$PWD/../../../usr/local/lib/libboost_filesystem.a

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>522</width>
-    <height>365</height>
+    <height>428</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,13 +24,13 @@
      </rect>
     </property>
     <property name="text">
-     <string>Choose path</string>
+     <string>Select path</string>
     </property>
     <property name="buddy">
-     <cstring>lineEdit</cstring>
+     <cstring>lineEdit_select_path</cstring>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="lineEdit_select_path">
     <property name="geometry">
      <rect>
       <x>168</x>
@@ -40,36 +40,36 @@
      </rect>
     </property>
    </widget>
-   <widget class="QToolButton" name="toolButton">
+   <widget class="QPushButton" name="pushButton_select_path">
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>50</y>
+      <y>49</y>
       <width>26</width>
-      <height>24</height>
+      <height>26</height>
      </rect>
     </property>
     <property name="text">
      <string>...</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
+   <widget class="QLineEdit" name="lineEdit_backup_path">
     <property name="geometry">
      <rect>
       <x>168</x>
-      <y>90</y>
+      <y>89</y>
       <width>231</width>
       <height>25</height>
      </rect>
     </property>
    </widget>
-   <widget class="QToolButton" name="toolButton_2">
+   <widget class="QPushButton" name="pushButton_backup_path">
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>90</y>
+      <y>88</y>
       <width>26</width>
-      <height>24</height>
+      <height>26</height>
      </rect>
     </property>
     <property name="text">
@@ -89,10 +89,10 @@
      <string>Backup path</string>
     </property>
     <property name="buddy">
-     <cstring>lineEdit_2</cstring>
+     <cstring>lineEdit_backup_path</cstring>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="pushButton_start_backup">
     <property name="geometry">
      <rect>
       <x>288</x>
@@ -112,7 +112,7 @@ color: #fefefe;</string>
      <string>Start backup</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_3">
+   <widget class="QLineEdit" name="lineEdit_delay">
     <property name="geometry">
      <rect>
       <x>168</x>
@@ -120,22 +120,6 @@ color: #fefefe;</string>
       <width>231</width>
       <height>25</height>
      </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>130</y>
-      <width>91</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Delay</string>
-    </property>
-    <property name="buddy">
-     <cstring>lineEdit_3</cstring>
     </property>
    </widget>
    <widget class="Line" name="line">
@@ -151,30 +135,46 @@ color: #fefefe;</string>
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QLabel" name="label_4">
+   <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>260</y>
-      <width>171</width>
-      <height>31</height>
+      <x>50</x>
+      <y>131</y>
+      <width>111</width>
+      <height>17</height>
      </rect>
     </property>
     <property name="text">
-     <string>Starting backup...</string>
+     <string>Delay (minutes)</string>
+    </property>
+    <property name="buddy">
+     <cstring>lineEdit_delay</cstring>
     </property>
    </widget>
-   <zorder>lineEdit</zorder>
-   <zorder>toolButton</zorder>
-   <zorder>lineEdit_2</zorder>
+   <widget class="QTextBrowser" name="textBrowser_backup_status">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>250</y>
+      <width>291</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0, 0, 0, 0.0);</string>
+    </property>
+   </widget>
+   <zorder>lineEdit_select_path</zorder>
+   <zorder>pushButton_select_path</zorder>
+   <zorder>lineEdit_backup_path</zorder>
    <zorder>label</zorder>
    <zorder>label_2</zorder>
-   <zorder>toolButton_2</zorder>
-   <zorder>pushButton</zorder>
-   <zorder>lineEdit_3</zorder>
-   <zorder>label_3</zorder>
+   <zorder>pushButton_backup_path</zorder>
+   <zorder>pushButton_start_backup</zorder>
+   <zorder>lineEdit_delay</zorder>
    <zorder>line</zorder>
-   <zorder>label_4</zorder>
+   <zorder>label_3</zorder>
+   <zorder>textBrowser_backup_status</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -198,12 +198,12 @@ color: #fefefe;</string>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
-  <tabstop>lineEdit</tabstop>
-  <tabstop>toolButton</tabstop>
-  <tabstop>lineEdit_2</tabstop>
-  <tabstop>toolButton_2</tabstop>
-  <tabstop>lineEdit_3</tabstop>
-  <tabstop>pushButton</tabstop>
+  <tabstop>lineEdit_select_path</tabstop>
+  <tabstop>pushButton_select_path</tabstop>
+  <tabstop>lineEdit_backup_path</tabstop>
+  <tabstop>pushButton_backup_path</tabstop>
+  <tabstop>lineEdit_delay</tabstop>
+  <tabstop>pushButton_start_backup</tabstop>
  </tabstops>
  <resources/>
  <connections/>

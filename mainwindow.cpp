@@ -1,5 +1,12 @@
+#include <iostream>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "QFileDialog"
+#include <auto-files-bkup/src/Transfer.hpp>
+#include <auto-files-bkup/src/helpers.hpp>
+#include <thread>
+#include <chrono>
+#include <exception>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -12,4 +19,84 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::on_pushButton_select_path_clicked()
+{
+    QString home_dir = QString::fromStdString(getenv("HOME"));
+
+    QString choose_directory_path = QFileDialog::getExistingDirectory(this, "Select a directory",
+                                      home_dir, QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+    ui->lineEdit_select_path->setText(choose_directory_path);
+
+    select_path = choose_directory_path;
+}
+
+void MainWindow::on_pushButton_backup_path_clicked()
+{
+    QString home_dir = QString::fromStdString(getenv("HOME"));
+
+    QString backup_directory_path = QFileDialog::getExistingDirectory(this, "Select a directory where to backup",
+                                      home_dir, QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+    ui->lineEdit_backup_path->setText(backup_directory_path);
+
+    backup_path = backup_directory_path;
+}
+
+void MainWindow::on_pushButton_start_backup_clicked()
+{
+    ui->textBrowser_backup_status->setText("Processing...");
+
+    if(select_path.size() == 0 || backup_path.size() == 0 || delay.size() == 0)
+    {
+        ui->textBrowser_backup_status->setText("Select all of the input fields and try again!");
+        return;
+    }
+    ui->textBrowser_backup_status->setText("Starting your backup...");
+
+    std::string select_path_str = select_path.toUtf8().constData();
+
+    std::string backup_path_str = backup_path.toUtf8().constData();
+
+    std::string selected_folder_name = helpers::explode('/', select_path_str).back();
+
+    backup_path_str += "/" + selected_folder_name;
+
+    int delay_str = std::stoi(delay.toUtf8().constData());
+
+    Transfer* transfer = new Transfer(select_path_str);
+    transfer->setTargetDir(backup_path_str);
+    transfer->setDelay(delay_str);
+
+
+    std::cout << "moving from " << transfer->getCurrentDir() << std::endl;
+    std::cout << "moving to " << transfer->getTargetDir() << std::endl;
+//    transfer.move();
+
+//    while(true)
+//    {
+        try
+        {
+            std::thread transfer_thread(&Transfer::move, transfer);
+            transfer_thread.detach();
+        } catch (std::exception& e)
+        {
+            std::cout << "Error occured: " << e.what() << std::endl;
+        }
+//    }
+}
+
+void MainWindow::on_lineEdit_delay_textChanged(const QString &delay)
+{
+    this->delay = delay;
+}
+
+void MainWindow::on_lineEdit_select_path_textChanged(const QString &path)
+{
+    this->select_path = path;
+}
+
+void MainWindow::on_lineEdit_backup_path_textChanged(const QString &path)
+{
+    this->backup_path = path;
 }
