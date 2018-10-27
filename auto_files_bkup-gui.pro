@@ -27,14 +27,11 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    auto-files-bkup/src/ConfigReader.cpp \
     auto-files-bkup/src/Transfer.cpp
 
 HEADERS += \
         mainwindow.h \
-    auto-files-bkup/src/ConfigReader.hpp \
     auto-files-bkup/src/helpers.hpp \
-    auto-files-bkup/src/Reader.hpp \
     auto-files-bkup/src/Transfer.hpp
 
 FORMS += \
