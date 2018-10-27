@@ -107,7 +107,8 @@ namespace helpers
             if(!fs::create_directory(destination))
             {
                 std::cerr << "Unable to create destination directory"
-                << destination.string() << '\n';
+                << destination.string() << '\n'
+                        ;
                 return false;
             }
         }

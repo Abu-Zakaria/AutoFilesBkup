@@ -49,9 +49,9 @@ void Transfer::move()
     helpers::printl("");
     std::cout << "\\|/ [" << formatted_time << "] - Backing up files to " << getTargetDir() << std::endl;
 
-
 }
 
+// TODO: use uintmax_t instead of int
 int Transfer::delete_dir(std::string dir_path)
 {
     boost::filesystem::path path = dir_path;
