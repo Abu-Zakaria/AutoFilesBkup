@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include <QApplication>
-#include <auto-files-bkup/src/Transfer.hpp>
 
 int main(int argc, char *argv[])
 {
