@@ -24,6 +24,10 @@ private slots:
 
     void on_lineEdit_delay_textChanged(const QString &arg1);
 
+    void on_lineEdit_select_path_textChanged(const QString &arg1);
+
+    void on_lineEdit_backup_path_textChanged(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
 
