@@ -4,8 +4,8 @@
 #include "ui_mainwindow.h"
 #include "QMessageBox"
 
-#include <auto-files-bkup/src/Transfer.hpp>
-#include <auto-files-bkup/src/helpers.hpp>
+#include <auto_files_bkup/src/Transfer.hpp>
+#include <auto_files_bkup/src/helpers.hpp>
 
 #include <thread>
 #include <chrono>

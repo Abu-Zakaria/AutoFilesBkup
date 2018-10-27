@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include <QCloseEvent>
-#include <auto-files-bkup/src/Transfer.hpp>
+#include <auto_files_bkup/src/Transfer.hpp>
 
 namespace Ui {
 class MainWindow;

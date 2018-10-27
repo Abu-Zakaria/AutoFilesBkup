@@ -27,12 +27,12 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    auto-files-bkup/src/Transfer.cpp
+    auto_files_bkup/src/Transfer.cpp
 
 HEADERS += \
         mainwindow.h \
-    auto-files-bkup/src/helpers.hpp \
-    auto-files-bkup/src/Transfer.hpp
+    auto_files_bkup/src/helpers.hpp \
+    /src/Transfer.hpp
 
 FORMS += \
         mainwindow.ui
