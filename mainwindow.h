@@ -37,7 +37,8 @@ private:
     QString backup_path;
     QString delay;
 
-    bool backing_up;
+    bool first_backup = true;
+    bool backing_up = false;
     bool backup_working = false;
 
     QString push_button_start_backup_text = "Start Backup";

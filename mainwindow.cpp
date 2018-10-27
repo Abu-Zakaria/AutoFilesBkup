@@ -49,7 +49,7 @@ void MainWindow::on_pushButton_backup_path_clicked()
 
 void MainWindow::on_pushButton_start_backup_clicked()
 {
-    if(backup_working)
+    if(!first_backup && backup_working)
     {
         if(backing_up)
         {
@@ -103,6 +103,7 @@ void MainWindow::on_pushButton_start_backup_clicked()
     {
         std::cout << "Error occured: " << e.what() << std::endl;
     }
+    first_backup = false;
 }
 
 void MainWindow::start_backup(Transfer* transfer)
