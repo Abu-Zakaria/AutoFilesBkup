@@ -37,10 +37,12 @@ private:
     QString backup_path;
     QString delay;
 
-    QString push_button_start_backup_text = "Start Backup";
-
     bool backing_up;
     bool backup_working = false;
+
+    QString push_button_start_backup_text = "Start Backup";
+    const QString start_backup_styles = "background-color: rgb(93, 31, 157); color: #fefefe;";
+    const QString cancel_backup_styles = "background-color: rgb(217, 38, 49); color: #fefefe;";
 
     void start_backup(Transfer* transfer);
 

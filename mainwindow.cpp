@@ -57,7 +57,8 @@ void MainWindow::on_pushButton_start_backup_clicked()
             return;
         }
         backup_working = false;
-        ui->pushButton_start_backup->setText(push_button_start_backup_text);
+        ui->pushButton_start_backup->setText(this->push_button_start_backup_text);
+        ui->pushButton_start_backup->setStyleSheet(this->start_backup_styles);
         ui->textBrowser_backup_status->setText("");
         return;
     }
@@ -92,6 +93,7 @@ void MainWindow::on_pushButton_start_backup_clicked()
     {
         backup_working = true;
 
+        ui->pushButton_start_backup->setStyleSheet(cancel_backup_styles);
         ui->pushButton_start_backup->setText("Cancel Backup");
         ui->textBrowser_backup_status->setText("Backing up your files...");
 
