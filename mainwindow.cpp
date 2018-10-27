@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    setFixedSize(520, 365);
+    setFixedSize(520, 465);
     ui->pushButton_start_backup->setText(push_button_start_backup_text);
 }
 

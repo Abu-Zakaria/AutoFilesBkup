@@ -6,19 +6,25 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>522</width>
-    <height>428</height>
+    <width>519</width>
+    <height>491</height>
    </rect>
   </property>
+  <property name="acceptDrops">
+   <bool>false</bool>
+  </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Auto Files Bkup</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>53</y>
+      <y>113</y>
       <width>91</width>
       <height>17</height>
      </rect>
@@ -34,7 +40,7 @@
     <property name="geometry">
      <rect>
       <x>168</x>
-      <y>50</y>
+      <y>110</y>
       <width>231</width>
       <height>25</height>
      </rect>
@@ -44,7 +50,7 @@
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>49</y>
+      <y>109</y>
       <width>26</width>
       <height>26</height>
      </rect>
@@ -57,7 +63,7 @@
     <property name="geometry">
      <rect>
       <x>168</x>
-      <y>89</y>
+      <y>149</y>
       <width>231</width>
       <height>25</height>
      </rect>
@@ -67,7 +73,7 @@
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>88</y>
+      <y>148</y>
       <width>26</width>
       <height>26</height>
      </rect>
@@ -80,7 +86,7 @@
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>93</y>
+      <y>153</y>
       <width>91</width>
       <height>17</height>
      </rect>
@@ -96,7 +102,7 @@
     <property name="geometry">
      <rect>
       <x>288</x>
-      <y>180</y>
+      <y>240</y>
       <width>111</width>
       <height>31</height>
      </rect>
@@ -105,7 +111,7 @@
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(114, 159, 207);
+     <string notr="true">background-color: rgb(93, 31, 157);
 color: #fefefe;</string>
     </property>
     <property name="text">
@@ -116,30 +122,17 @@ color: #fefefe;</string>
     <property name="geometry">
      <rect>
       <x>168</x>
-      <y>127</y>
+      <y>187</y>
       <width>231</width>
       <height>25</height>
      </rect>
-    </property>
-   </widget>
-   <widget class="Line" name="line">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>230</y>
-      <width>381</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>131</y>
+      <y>191</y>
       <width>111</width>
       <height>17</height>
      </rect>
@@ -154,14 +147,46 @@ color: #fefefe;</string>
    <widget class="QTextBrowser" name="textBrowser_backup_status">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>250</y>
+      <x>110</x>
+      <y>330</y>
       <width>291</width>
       <height>101</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgba(0, 0, 0, 0.0);</string>
+    </property>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>310</y>
+      <width>391</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>30</y>
+      <width>251</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Noto Sans CJK JP Black</family>
+      <pointsize>24</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Auto Files Bkup</string>
     </property>
    </widget>
    <zorder>lineEdit_select_path</zorder>
@@ -172,27 +197,20 @@ color: #fefefe;</string>
    <zorder>pushButton_backup_path</zorder>
    <zorder>pushButton_start_backup</zorder>
    <zorder>lineEdit_delay</zorder>
-   <zorder>line</zorder>
    <zorder>label_3</zorder>
    <zorder>textBrowser_backup_status</zorder>
+   <zorder>line</zorder>
+   <zorder>label_4</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>522</width>
+     <width>519</width>
      <height>22</height>
     </rect>
    </property>
-  </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
