@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     setFixedSize(520, 365);
+    ui->pushButton_start_backup->setText(push_button_start_backup_text);
 }
 
 MainWindow::~MainWindow()
@@ -45,6 +46,13 @@ void MainWindow::on_pushButton_backup_path_clicked()
 
 void MainWindow::on_pushButton_start_backup_clicked()
 {
+    if(backup_working)
+    {
+        backup_working = false;
+        ui->pushButton_start_backup->setText(push_button_start_backup_text);
+        ui->textBrowser_backup_status->setText("");
+        return;
+    }
     ui->textBrowser_backup_status->setText("Processing...");
 
     if(select_path.size() == 0 || backup_path.size() == 0 || delay.size() == 0)
@@ -71,19 +79,31 @@ void MainWindow::on_pushButton_start_backup_clicked()
 
     std::cout << "moving from " << transfer->getCurrentDir() << std::endl;
     std::cout << "moving to " << transfer->getTargetDir() << std::endl;
-//    transfer.move();
 
-//    while(true)
-//    {
-        try
-        {
-            std::thread transfer_thread(&Transfer::move, transfer);
-            transfer_thread.detach();
-        } catch (std::exception& e)
-        {
-            std::cout << "Error occured: " << e.what() << std::endl;
-        }
-//    }
+    try
+    {
+        backup_working = true;
+
+        ui->pushButton_start_backup->setText("Cancel Backup");
+        ui->textBrowser_backup_status->setText("Backing up your files...");
+
+        std::thread start_backup_thread(&MainWindow::start_backup, this, transfer);
+        start_backup_thread.detach();
+    } catch (std::exception& e)
+    {
+        std::cout << "Error occured: " << e.what() << std::endl;
+    }
+}
+
+void MainWindow::start_backup(Transfer* transfer)
+{
+    while(backup_working)
+    {
+        transfer->move();
+        std::this_thread::sleep_for(std::chrono::minutes(delay.toUInt()));
+    }
+
+    std::cout << "Canceling backup process" << std::endl;
 }
 
 void MainWindow::on_lineEdit_delay_textChanged(const QString &delay)
